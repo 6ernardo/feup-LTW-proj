@@ -10,7 +10,7 @@
     <body>
         <header>Login</header>
         <main>
-            <form>
+            <form action="../actions/action_login.php" method="POST">
                 <input type="text" placeholder="Username" name="username" required>
                 <input type="password" placeholder="Password" name="password" required>
                 <button type="submit" name="login">Login</button>

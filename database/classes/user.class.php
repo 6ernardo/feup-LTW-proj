@@ -21,5 +21,17 @@
 
             return ($count > 0);
         }
+
+        static function getUserWithPassword(PDO $db, string $username, string $password) : ?User {
+            $stmt = $db->prepare('SELECT * FROM users WHERE username = ?');
+            $stmt->execute(array($username));
+            
+            $user = $stmt->fetch();
+
+            if($user && password_verify($password, $user['password'])){
+                return new User($user['id'], $user['username'], $user['email'], $user['role_id']);
+            }
+            else return null;
+        }
     }
 ?>

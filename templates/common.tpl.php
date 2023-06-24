@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1); ?>
 
-<?php function drawHeader() { ?>
+<?php function drawHeader(Session $session) { ?>
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
@@ -12,13 +12,14 @@
             <nav>
                 <h1>Ticket Site</h1>
                 <?php
-                    drawLoggedOff();
+                    if($session->isLoggedIn()) drawLoggedIn();
+                    else drawLoggedOff();
                 ?>
 <?php } ?>
 
 <?php function drawLoggedIn() { ?>
         <p>Edit Profile</p>
-        <p>Log Off</p>
+        <p><a href="../actions/action_logout.php">Logout</a></p>
     </nav>
 </header>
 <main>
