@@ -25,8 +25,8 @@
 <?php } ?>
 
 <?php function drawLoggedOff() { ?>
-        <p>Login<p>
-        <p>Register<p>
+        <p><a href="../pages/login.php">Login</a><p>
+        <p><a href="../pages/register.php">Register</a><p>
     </nav>
 </header>
 <main>
