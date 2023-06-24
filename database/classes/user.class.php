@@ -13,5 +13,13 @@
             $this->email = $email;
             $this->role = $role;
         }
+
+        static function usernameAvailable(PDO $db, string $username) : bool {
+            $stmt = $db->prepare('SELECT * FROM users WHERE username = ?');
+            $stmt->execute(array($username));
+            $count = $stmt->fetchColumn();
+
+            return ($count > 0);
+        }
     }
 ?>
