@@ -11,12 +11,13 @@ The goal is to *"develop a website to streamline and manage trouble tickets effe
 [*More detailed info on the requirements of the project can be found by clicking here.*](https://web.fe.up.pt/~arestivo/page/courses/ltw/project/)
 
 ### Completed Tasks
-*Still nothing...*
+
+#### All users
+- Register, Login and Logout
 
 ### To Do
 
 #### All users
-- Register, Login and Logout
 - Edit their profile
 
 #### Clients
