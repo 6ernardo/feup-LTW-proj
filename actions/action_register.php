@@ -16,7 +16,7 @@
 
     $user = User::usernameAvailable($db, $username);
 
-    if($user){
+    if(!$user){
         /* error message */
         echo 'Name already exists';
     }

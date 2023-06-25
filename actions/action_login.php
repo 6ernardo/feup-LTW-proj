@@ -18,6 +18,7 @@
         $session->setID($user->id);
         $session->setUsername($user->username);
         $session->setRole($user->role);
+        $session->setEmail($user->email);
         header('Location: ../pages');
     }
     else {

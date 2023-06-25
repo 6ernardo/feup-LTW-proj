@@ -17,12 +17,16 @@
             return isset($_SESSION['id']) ? $_SESSION['id'] : null;
         }
 
-        public function getUsername() : ?int {
+        public function getUsername() : ?string {
             return isset($_SESSION['username']) ? $_SESSION['username'] : null;
         }
 
         public function getRole() : ?int {
             return isset($_SESSION['role']) ? $_SESSION['role'] : null;
+        }
+
+        public function getEmail() : ?string {
+            return isset($_SESSION['email']) ? $_SESSION['email'] : null;
         }
 
         public function setID(int $id) {
@@ -37,4 +41,7 @@
             $_SESSION['role'] = $role;
         }
 
+        public function setEmail(string $email) {
+            $_SESSION['email'] = $email;
+        }
     }

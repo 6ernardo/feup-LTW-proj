@@ -18,7 +18,7 @@
 <?php } ?>
 
 <?php function drawLoggedIn() { ?>
-        <p>Edit Profile</p>
+        <p><a href="../pages/editprofile.php">Edit Profile</a></p>
         <p><a href="../actions/action_logout.php">Logout</a></p>
     </nav>
 </header>

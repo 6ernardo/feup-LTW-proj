@@ -14,11 +14,9 @@ The goal is to *"develop a website to streamline and manage trouble tickets effe
 
 #### All users
 - Register, Login and Logout
+- Edit their profile
 
 ### To Do
-
-#### All users
-- Edit their profile
 
 #### Clients
 - Submit tickets

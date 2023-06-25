@@ -19,7 +19,7 @@
             $stmt->execute(array($username));
             $count = $stmt->fetchColumn();
 
-            return ($count > 0);
+            return ($count == 0);
         }
 
         static function getUserWithPassword(PDO $db, string $username, string $password) : ?User {
