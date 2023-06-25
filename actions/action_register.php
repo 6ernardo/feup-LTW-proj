@@ -14,19 +14,19 @@
     $password = $_POST['password'];
     $password_confirm = $_POST['password_confirm'];
 
-    $user = User::usernameAvailable($db, $username);
 
-    if(!$user){
-        /* error message */
-        echo 'Name already exists';
+
+    if(!User::usernameAvailable($db, $username)){
+        $session->addMessage('error', 'Name already exists');
     }
     else if($password != $password_confirm){
-        /* error message */
-        echo 'Passwords do not match';
+        $session->addMessage('error', 'Passwords did not match.');
     }
     else {
         $stmt = $db->prepare('INSERT INTO users (username, email, password, role_id) VALUES (?, ?, ?, ?)');
         $stmt->execute(array($username, $email, password_hash($password, PASSWORD_DEFAULT), 1));
+
+        $session->addMessage('success', 'New account created with success! Login to continue.');
 
         header('Location: ../pages');
     }

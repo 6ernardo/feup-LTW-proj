@@ -8,6 +8,7 @@
         <meta charset="utf-8">
     </head>
     <body>
+        <?php drawMessages($session); ?>
         <header>
             <nav>
                 <h1>Ticket Site</h1>
@@ -42,5 +43,15 @@
         </footer>
     </body>
 </html>
+<?php } ?>
+
+<?php function drawMessages(Session $session) { ?>
+    <section>
+        <?php foreach($session->getMessages() as $message) { ?>
+            <article>
+                <?=$message['text']?>
+            </article>
+        <?php } ?>
+    </section>
 <?php } ?>
 

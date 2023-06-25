@@ -19,10 +19,11 @@
         $session->setUsername($user->username);
         $session->setRole($user->role);
         $session->setEmail($user->email);
-        header('Location: ../pages');
+        $session->addMessage('success', 'Login successful!');
     }
     else {
-        /* Error message */
-        echo 'No user with this username or password exists';
+        $session->addMessage('error', 'No user with this username or password exists.');
     }
+
+    header('Location: ../pages');
 ?>
