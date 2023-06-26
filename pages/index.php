@@ -14,8 +14,10 @@ require_once('../templates/ticket.tpl.php');
 require_once('../database/classes/ticket.class.php');
 
 drawHeader($session);
-drawTickets(Ticket::getUserTickets($db, $session->getID()));
-drawButton('Submit new Ticket', '../pages/ticketsubmission.php');
+if($session->isLoggedIn()){
+    drawTickets(Ticket::getUserTickets($db, $session->getID()));
+    drawButton('Submit new Ticket', '../pages/ticketsubmission.php');
+} 
 drawFooter();
 
 ?>

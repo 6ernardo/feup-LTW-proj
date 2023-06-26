@@ -22,5 +22,13 @@
 
             return $departments;
         }
+
+        static function departmentNameAvailable(PDO $db, string $name) : bool {
+            $stmt = $db->prepare('SELECT * FROM departments WHERE name = ?');
+            $stmt->execute(array($name));
+            $count = $stmt->fetchColumn();
+
+            return ($count == 0);
+        }
     }
 ?>

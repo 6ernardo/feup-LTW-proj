@@ -33,5 +33,18 @@
             }
             else return null;
         }
+
+        static function getAllUsers(PDO $db) : array {
+            $stmt = $db->prepare('SELECT * FROM users');
+            $stmt->execute();
+
+            $users = array();
+
+            while($user = $stmt->fetch()){
+                $users[] = new User($user['id'], $user['username'], $user['email'], $user['role_id']);
+            }
+
+            return $users;
+        }
     }
 ?>

@@ -20,6 +20,9 @@ The goal is to *"develop a website to streamline and manage trouble tickets effe
 - Submit tickets
 - List and track their tickets
 
+#### Admins
+- Add new department, statuses
+
 ### To Do
 
 #### Clients
@@ -36,6 +39,5 @@ The goal is to *"develop a website to streamline and manage trouble tickets effe
 
 #### Admins
 - Edit user's role
-- Add new department, statuses
 - Assign agents to departments
 
