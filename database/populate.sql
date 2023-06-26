@@ -3,3 +3,8 @@ INSERT INTO users (username, email, password, role_id) VALUES ('bernardo', '6ern
 
 -- Populate DEPARTMENTS
 INSERT INTO departments (name) VALUES ('dept1');
+
+-- Populate STATUS
+INSERT INTO status (name) VALUES ('Open');
+INSERT INTO status (name) VALUES ('Assigned');
+INSERT INTO status (name) VALUES ('Closed');
