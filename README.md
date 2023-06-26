@@ -16,11 +16,13 @@ The goal is to *"develop a website to streamline and manage trouble tickets effe
 - Register, Login and Logout
 - Edit their profile
 
-### To Do
-
 #### Clients
 - Submit tickets
 - List and track their tickets
+
+### To Do
+
+#### Clients
 - Reply to ticket inquiries
 
 #### Agents

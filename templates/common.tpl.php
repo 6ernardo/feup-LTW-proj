@@ -55,3 +55,8 @@
     </section>
 <?php } ?>
 
+<?php function drawButton(string $text, string $path) { ?>
+
+<button><a href="<?=$path?>"><?=$text?></a></button>
+
+<?php } ?>
