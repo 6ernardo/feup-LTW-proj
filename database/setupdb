@@ -1,0 +1,7 @@
+#!/bin/bash
+
+rm -f database.db
+sqlite3 database.db < database.sql
+sqlite3 database.db < populate.sql
+
+echo "Database initiated."
