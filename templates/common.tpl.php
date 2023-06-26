@@ -11,7 +11,7 @@
         <?php drawMessages($session); ?>
         <header>
             <nav>
-                <h1>Ticket Site</h1>
+                <h1><a href="../pages/">Ticket Site</a></h1>
                 <?php
                     if($session->isLoggedIn()) drawLoggedIn();
                     else drawLoggedOff();
