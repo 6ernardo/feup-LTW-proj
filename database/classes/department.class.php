@@ -30,5 +30,18 @@
 
             return ($count == 0);
         }
+
+        static function getAssignedDepartments(PDO $db, int $id) : array {
+            $stmt = $db->prepare('SELECT * FROM departments WHERE id IN (SELECT department_id FROM agent_departments WHERE agent_id = ?)');
+            $stmt->execute(array($id));
+
+            $departments = array();
+
+            while($dept = $stmt->fetch()){
+                $departments[] = new Department($dept['id'], $dept['name']);
+            }
+
+            return $departments;
+        }
     }
 ?>

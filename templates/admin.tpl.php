@@ -32,3 +32,47 @@
 </form>
 <?php } ?>
 
+<?php function drawUserInfo(User $user, array $dept_assigned, array $roles, array $departments) { ?>
+    <p>User: <?=$user->username?> #<?=$user->id?></p>
+    <p>Email: <?=$user->email?></p>
+    <p>Role: <?=$user->role?></p>
+    <?php if($user->role < 3) { ?>
+        <p>Assigned Departments:</p>
+        <?php foreach($dept_assigned as $dept) { ?>
+            <p><?=$dept->name?></p>
+        <?php } ?>
+        <?php drawDepartmentAssign($user, $departments) ?>
+    <?php } ?>
+    <?php drawRoleChanger($user, $roles); ?>
+    
+<?php } ?>
+
+<?php function drawRoleChanger(User $user, array $roles) { ?>
+<form action="../actions/action_change_role.php?id=<?=$user->id?>" method="POST">
+    <label>
+        Change Role to
+        <select name="role">
+            <?php foreach($roles as $role) { ?>
+                <option value=<?=$role->id?>><?=$role->name?></option>
+            <?php } ?>
+        </select>
+    </label>
+    <button type="submit" name="submit_role_change">Change Role</button>
+</form>
+    
+<?php } ?>
+
+<?php function drawDepartmentAssign(User $user, array $departments) { ?>
+<form action="../actions/action_assign_department.php?id=<?=$user->id?>" METHOD="POST">
+    <label>
+        Assign to Department
+        <select name="department">
+            <?php foreach($departments as $dept) { ?>
+                <option value=<?=$dept->id?>><?=$dept->name?></option>
+            <?php } ?>
+        </select>
+    </label>
+    <button type="submit" name="submit_department_assign">Assign Department</button>
+</form>
+<?php } ?>
+

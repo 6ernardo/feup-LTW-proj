@@ -46,5 +46,17 @@
 
             return $users;
         }
+
+        static function getUser(PDO $db, int $id) : ?User {
+            $stmt = $db->prepare('SELECT * FROM users WHERE id = ?');
+            $stmt->execute(array($id));
+
+            $user = $stmt->fetch();
+
+            if($user){
+                return new User($user['id'], $user['username'], $user['email'], $user['role_id']);
+            }
+            else return null;
+        }
     }
 ?>
