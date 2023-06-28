@@ -36,6 +36,17 @@
             return $tickets;
         }
 
+        static function getTicket(PDO $db, int $id) : ?Ticket {
+            $stmt = $db->prepare('SELECT * FROM tickets WHERE id = ?');
+            $stmt->execute(array($id));
+
+            $ticket = $stmt->fetch();
+
+            if($ticket){
+                return new Ticket($ticket['id'], $ticket['subject'], $ticket['content'], $ticket['submitter_id'], $ticket['assignee_id'], $ticket['department_id'], $ticket['status_id']);
+            }
+            else return null;
+        }
     }
 
 ?>

@@ -38,3 +38,22 @@
     </ul>
 <?php } ?>
 <?php } ?>
+
+<?php function drawTicketInfo(Ticket $ticket) { ?>
+    <h2><?=$ticket->subject?></h2>
+    <p><?=$ticket->submitter_id?></p>
+    <p><?=$ticket->department_id?></p>
+    <p><?=$ticket->status_id?></p>
+    <p><?=$ticket->content?></p>
+<?php } ?>
+
+<?php function drawTicketInquirySection(Ticket $ticket, array $inquiries) { ?>
+    <?php foreach($inquiries as $inq) { ?>
+        <p><?=$inq->user_id?></p>
+        <p><?=$inq->content?>
+    <?php } ?>
+    <form action="../actions/action_submit_inquiry.php?id=<?=$ticket->id?>" method="POST">
+        <input type="text" name="inquiry" placeholder="Message..." required>
+        <button type="submit" name="submit_inquiry">Send</button>
+    </form>
+<?php } ?>
