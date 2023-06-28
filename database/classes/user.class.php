@@ -58,5 +58,18 @@
             }
             else return null;
         }
+
+        static function getAgents(PDO $db) : array {
+            $stmt = $db->prepare('SELECT * FROM users WHERE role_id < 3');
+            $stmt->execute();
+
+            $agents = array();
+
+            while($agent = $stmt->fetch()){
+                $agents[] = new User($agent['id'], $agent['username'], $agent['email'], $agent['role_id']);
+            }
+
+            return $agents;
+        }
     }
 ?>

@@ -31,10 +31,11 @@
     <li>Status</li>
 </ul>
 <?php foreach($tickets as $ticket) { ?>
-    <ul>
+    <ul><a href="../pages/ticket.php?id=<?=$ticket->id?>">
         <li><?=$ticket->subject?></li>
         <li><?=$ticket->department_id?></li>
         <li><?=$ticket->status_id?></li>
+    </a>
     </ul>
 <?php } ?>
 <?php } ?>
@@ -44,6 +45,7 @@
     <p><?=$ticket->submitter_id?></p>
     <p><?=$ticket->department_id?></p>
     <p><?=$ticket->status_id?></p>
+    <p><?=$ticket->assignee_id?></p>
     <p><?=$ticket->content?></p>
 <?php } ?>
 
@@ -55,5 +57,30 @@
     <form action="../actions/action_submit_inquiry.php?id=<?=$ticket->id?>" method="POST">
         <input type="text" name="inquiry" placeholder="Message..." required>
         <button type="submit" name="submit_inquiry">Send</button>
+    </form>
+<?php } ?>
+
+<?php function drawAgentTicketTools(Ticket $ticket, array $departments, array $agents) { ?>
+    <form action="../actions/action_change_department.php?id=<?=$ticket->id?>" method="POST">
+        <label>
+            Change to Department
+            <select name="department">
+                <?php foreach($departments as $dept) { ?>
+                    <option value="<?=$dept->id?>"><?=$dept->name?></option>
+                <?php } ?>
+            </select>
+            <button type="submit" name="submit_dept_change">Change</button>
+        </label>
+    </form>
+    <form action="../actions/action_assign_agent.php?id=<?=$ticket->id?>" method="POST">
+        <label>
+            Assign to Agent
+            <select name="agent">
+                <?php foreach($agents as $agent) { ?>
+                    <option value="<?=$agent->id?>"><?=$agent->username?></option>
+                <?php } ?>
+            </select>
+            <button type="submit" name="submit_agent_assign">Assign</button>
+        </label>
     </form>
 <?php } ?>
