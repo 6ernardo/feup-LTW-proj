@@ -35,8 +35,7 @@
         <li><?=$ticket->subject?></li>
         <li><?=$ticket->department_id?></li>
         <li><?=$ticket->status_id?></li>
-    </a>
-    </ul>
+    </a></ul>
 <?php } ?>
 <?php } ?>
 
@@ -60,7 +59,18 @@
     </form>
 <?php } ?>
 
-<?php function drawAgentTicketTools(Ticket $ticket, array $departments, array $agents) { ?>
+<?php function drawAgentTicketTools(Ticket $ticket, array $departments, array $agents, array $faqs) { ?>
+    <form action="../actions/action_answer_faq.php?id=<?=$ticket->id?>" method="POST">
+        <label>
+            Answer with FAQ
+            <select name="faq">
+                <?php foreach($faqs as $faq) { ?>
+                    <option value="<?=$faq->id?>"><?=$faq->question?></option>
+                <?php } ?>
+            </select>
+            <button type="submit" name="submit_faq_inquiry">Send</button>
+        </label>
+    </form>
     <form action="../actions/action_change_department.php?id=<?=$ticket->id?>" method="POST">
         <label>
             Change to Department

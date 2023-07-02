@@ -9,12 +9,12 @@
     <li>Role</li>
 </ul>
 <?php foreach($users as $user) { ?>
-    <ul>
+    <ul><a href="../pages/usermanagement.php?id=<?=$user->id?>">
         <li><?=$user->id?></li>
         <li><?=$user->username?></li>
         <li><?=$user->email?></li>
         <li><?=$user->role?></li>
-    </ul>
+    </a></ul>
 <?php } ?>
 <?php } ?>
 

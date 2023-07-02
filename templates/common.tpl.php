@@ -16,6 +16,7 @@
                     if($session->isLoggedIn()) drawLoggedIn();
                     else drawLoggedOff();
                 ?>
+                <p><a href="../pages/faq.php">FAQ</a></p>
 <?php } ?>
 
 <?php function drawLoggedIn() { ?>
