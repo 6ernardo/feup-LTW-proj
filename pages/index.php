@@ -17,6 +17,10 @@ drawHeader($session);
 if($session->isLoggedIn()){
     drawTickets(Ticket::getUserTickets($db, $session->getID()));
     drawButton('Submit new Ticket', '../pages/ticketsubmission.php');
+    if($session->getRole() < 3 ){
+        $tickets = Ticket::getAgentTickets($db, $session->getID());
+        drawAgentTickets($tickets);
+    }
 } 
 drawFooter();
 

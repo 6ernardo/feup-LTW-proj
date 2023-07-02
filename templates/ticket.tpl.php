@@ -39,6 +39,22 @@
 <?php } ?>
 <?php } ?>
 
+<?php function drawAgentTickets(array $tickets) { ?>
+<h2>Assigned tickets</h2>
+<ul>
+    <li>Subject</li>
+    <li>Department</li>
+    <li>Status</li>
+</ul>
+<?php foreach($tickets as $ticket) { ?>
+    <ul><a href="../pages/ticket.php?id=<?=$ticket->id?>">
+        <li><?=$ticket->subject?></li>
+        <li><?=$ticket->department_id?></li>
+        <li><?=$ticket->status_id?></li>
+    </a></ul>
+<?php } ?>
+<?php } ?>
+
 <?php function drawTicketInfo(Ticket $ticket) { ?>
     <h2><?=$ticket->subject?></h2>
     <p><?=$ticket->submitter_id?></p>
