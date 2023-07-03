@@ -83,6 +83,35 @@
 
             return $tickets;
         }
+
+        static function filterTickets(PDO $db, int $dept, int $status){
+            $query = 'SELECT * FROM tickets WHERE 1=1';
+            $params = array();
+
+            if($dept !== 0){
+                $query .= ' AND department_id = ?';
+                $params[] = $dept;
+            }
+
+            if($status !== 0){
+                $query .= ' AND status_id = ?';
+                $params[] = $status;
+            }
+
+            $stmt = $db->prepare($query);
+            $stmt->execute($params);
+
+            $tickets = array();
+
+            
+            while($ticket = $stmt->fetch()){
+                $tickets[] = new Ticket($ticket['id'], $ticket['subject'], $ticket['content'], 
+                                        $ticket['submitter_id'], $ticket['assignee_id'], 
+                                        $ticket['department_id'], $ticket['status_id']);
+            }
+
+            return $tickets;
+        }
     }
 
 ?>

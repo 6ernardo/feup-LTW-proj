@@ -1,6 +1,7 @@
 const filterTickets = document.querySelector('#submit_ticket_filter')
 if (filterTickets) {
-    filterTickets.addEventListener('click', async function() {
+    filterTickets.addEventListener('click', async function(event) {
+        event.preventDefault();
         const dept = document.getElementById('department').value;
         const status = document.getElementById('status').value;
 
@@ -21,9 +22,11 @@ if (filterTickets) {
             const status = document.createElement('li');
             status.textContent = ticket.status_id;
 
-            ul.appendChild(subject);
-            ul.appendChild(department);
-            ul.appendChild(status);
+            link.appendChild(subject);
+            link.appendChild(department);
+            link.appendChild(status);
+
+            ul.appendChild(link);
 
             section.appendChild(ul);
         }
