@@ -16,12 +16,14 @@ require_once('../database/classes/inquiry.class.php');
 require_once('../database/classes/department.class.php');
 require_once('../database/classes/user.class.php');
 require_once('../database/classes/faq.class.php');
+require_once('../database/classes/status.class.php');
 
 $ticket = Ticket::getTicket($db, intval($_GET['id']));
 $inquiries = Inquiry::getTicketInquiries($db, intval($_GET['id']));
 $departments = Department::getDepartments($db);
 $agents = User::getAgents($db);
 $faqs = FAQ::getAllFAQ($db);
+$statuses = Status::getAllStatus($db);
 
 
 drawHeader($session);
@@ -29,7 +31,7 @@ drawTicketInfo($ticket);
 drawTicketInquirySection($ticket, $inquiries);
 
 if($session->getRole() < 3){
-    drawAgentTicketTools($ticket, $departments, $agents, $faqs);
+    drawAgentTicketTools($ticket, $departments, $agents, $faqs, $statuses);
 }
 
 drawFooter();

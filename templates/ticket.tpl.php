@@ -98,7 +98,7 @@
     </form>
 <?php } ?>
 
-<?php function drawAgentTicketTools(Ticket $ticket, array $departments, array $agents, array $faqs) { ?>
+<?php function drawAgentTicketTools(Ticket $ticket, array $departments, array $agents, array $faqs, array $statuses) { ?>
     <form action="../actions/action_answer_faq.php?id=<?=$ticket->id?>" method="POST">
         <label>
             Answer with FAQ
@@ -131,6 +131,17 @@
             </select>
             <button type="submit" name="submit_agent_assign">Assign</button>
         </label>
+    </form>
+    <form action="../actions/action_change_status.php?id=<?=$ticket->id?>" method="POST">
+        <label>
+            Change Status
+            <select name="status">
+                <?php foreach($statuses as $status) { ?>
+                    <option value="<?=$status->id?>"><?=$status->name?></option>
+                <?php } ?>
+            </select>
+        </label>
+        <button type="submit" name="submit_status_change">Change</button>
     </form>
 
 <?php } ?>
