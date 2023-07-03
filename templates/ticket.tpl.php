@@ -39,20 +39,43 @@
 <?php } ?>
 <?php } ?>
 
-<?php function drawAgentTickets(array $tickets) { ?>
+<?php function drawAgentTickets(array $tickets, array $departments, array $status) { ?>
 <h2>Assigned tickets</h2>
 <ul>
     <li>Subject</li>
     <li>Department</li>
     <li>Status</li>
 </ul>
-<?php foreach($tickets as $ticket) { ?>
-    <ul><a href="../pages/ticket.php?id=<?=$ticket->id?>">
-        <li><?=$ticket->subject?></li>
-        <li><?=$ticket->department_id?></li>
-        <li><?=$ticket->status_id?></li>
-    </a></ul>
-<?php } ?>
+<section id="tickets">
+    <?php foreach($tickets as $ticket) { ?>
+        <ul><a href="../pages/ticket.php?id=<?=$ticket->id?>">
+            <li><?=$ticket->subject?></li>
+            <li><?=$ticket->department_id?></li>
+            <li><?=$ticket->status_id?></li>
+        </a></ul>
+    <?php } ?>
+</section>
+<form>
+    <label>
+        Filter by Department
+        <select id="department">
+            <option value="" selected>Any department</option>
+            <?php foreach($departments as $dept) { ?>
+                <option value="<?=$dept->id?>"><?=$dept->name?></option>
+            <?php } ?>
+        </select>
+    </label>
+    <label>
+        Filter by Status
+        <select id="status">
+        <option value="" selected>Any status</option>
+            <?php foreach($status as $st) { ?>
+                <option value="<?=$st->id?>"><?=$st->name?></option>
+            <?php } ?>
+        </select>
+    </label>
+    <button type="submit" id="submit_ticket_filter">Filter</button>
+</form>
 <?php } ?>
 
 <?php function drawTicketInfo(Ticket $ticket) { ?>

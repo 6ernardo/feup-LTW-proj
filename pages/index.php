@@ -12,6 +12,8 @@ require_once('../templates/common.tpl.php');
 require_once('../templates/ticket.tpl.php');
 
 require_once('../database/classes/ticket.class.php');
+require_once('../database/classes/status.class.php');
+require_once('../database/classes/department.class.php');
 
 drawHeader($session);
 if($session->isLoggedIn()){
@@ -19,7 +21,9 @@ if($session->isLoggedIn()){
     drawButton('Submit new Ticket', '../pages/ticketsubmission.php');
     if($session->getRole() < 3 ){
         $tickets = Ticket::getAgentTickets($db, $session->getID());
-        drawAgentTickets($tickets);
+        $departments = Department::getDepartments($db);
+        $statuses = Status::getAllStatus($db);
+        drawAgentTickets($tickets, $departments, $statuses);
     }
 } 
 drawFooter();

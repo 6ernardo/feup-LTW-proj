@@ -6,6 +6,7 @@
     <head>
         <title>Ticket Site</title>
         <meta charset="utf-8">
+        <script src="../javascript/ticketfilter.js" defer></script>
     </head>
     <body>
         <?php drawMessages($session); ?>
