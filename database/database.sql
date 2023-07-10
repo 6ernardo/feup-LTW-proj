@@ -57,6 +57,17 @@ CREATE TABLE ticket_inquiries (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+CREATE TABLE ticket_changes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ticket_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL, --user that made the change
+    changed_field TEXT NOT NULL,
+    old_version TEXT,
+    new_version TEXT NOT NULL,
+    FOREIGN KEY (ticket_id) REFERENCES tickets(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
 --Need to create table mapping hastags to tickets?
 CREATE TABLE hashtags (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
