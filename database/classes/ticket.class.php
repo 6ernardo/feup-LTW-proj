@@ -112,6 +112,20 @@
 
             return $tickets;
         }
+
+        static function getTicketHistory(PDO $db, int $id) : array {
+            $stmt = $db->prepare('SELECT * FROM ticket_changes WHERE ticket_id = ?');
+            $stmt->execute(array($id));
+
+            $changes = array();
+
+            while($change = $stmt->fetch()){
+                $changes[] = array('user_id' => $change['user_id'], 'changed_field' => $change['changed_field'], 
+                                'old_version' => $change['old_version'], 'new_version' => $change['new_version']);
+            }
+
+            return $changes;
+        }
     }
 
 ?>

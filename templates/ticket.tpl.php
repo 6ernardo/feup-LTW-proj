@@ -99,6 +99,7 @@
 <?php } ?>
 
 <?php function drawAgentTicketTools(Ticket $ticket, array $departments, array $agents, array $faqs, array $statuses) { ?>
+    <p><a href='../pages/tickethistory.php?id=<?=$ticket->id?>'>Ticket History</a></p>
     <form action="../actions/action_answer_faq.php?id=<?=$ticket->id?>" method="POST">
         <label>
             Answer with FAQ
@@ -143,5 +144,12 @@
         </label>
         <button type="submit" name="submit_status_change">Change</button>
     </form>
+<?php } ?>
 
+<?php function drawTicketHistory(Ticket $ticket, array $history) { ?>
+    <h2><?=$ticket->subject?></h2>
+    <p>Ticket #<?=$ticket->id?></p>
+    <?php foreach($history as $change) {?>
+        <p><?=$change['changed_field']?></p>
+    <?php } ?>
 <?php } ?>
