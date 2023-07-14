@@ -126,6 +126,19 @@
 
             return $changes;
         }
+
+        static function getTicketHastags(PDO $db, int $id) : array {
+            $stmt = $db->prepare('SELECT * FROM ticket_hashtags WHERE ticket_id = ?');
+            $stmt->execute(array($id));
+
+            $hashtags = array();
+
+            while($hashtag = $stmt->fetch()){
+                $hashtags[] = array('id' => $hashtag['id'], 'hashtag' => $hashtag['hashtag']);
+            }
+
+            return $hashtags;
+        }
     }
 
 ?>
