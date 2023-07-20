@@ -33,7 +33,7 @@ drawTicketInquirySection($ticket, $inquiries);
 if($session->getRole() < 3){
     drawAgentTicketTools($ticket, $departments, $agents, $faqs, $statuses);
 }
-
+drawButton('Back', '../pages');
 drawFooter();
 
 ?>

@@ -23,6 +23,7 @@ $departments = Department::getDepartments($db);
 
 drawHeader($session);
 drawUserInfo($user, $dept_assigned, $roles, $departments);
+drawButton('Back', '../pages/admindashboard.php');
 drawFooter();
 
 ?>

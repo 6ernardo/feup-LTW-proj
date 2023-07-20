@@ -18,6 +18,7 @@ $faqs = FAQ::getAllFAQ($db);
 drawHeader($session);
 drawFAQ($faqs);
 if($session->getRole() < 3) drawSubmitFAQ();
+drawButton('Back', '../pages');
 drawFooter();
 
 ?>

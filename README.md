@@ -42,7 +42,7 @@ The goal is to *"develop a website to streamline and manage trouble tickets effe
 - Edit ticket hashtags
 
 ### Misc
-- Connecting pages through links
+- Add dates to tickets, inquiries, etc
 - IDs being displayed in various places (instead of names)
 - CSS
 - QOL JS

@@ -18,6 +18,7 @@ $history = Ticket::getTicketHistory($db, intval($_GET['id']));
 
 drawHeader($session);
 drawTicketHistory($ticket, $history);
+drawButton('Back', "../pages/ticket.php?id=$ticket->id");
 drawFooter();
 
 ?>

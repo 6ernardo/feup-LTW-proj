@@ -25,6 +25,9 @@ if($session->isLoggedIn()){
         $statuses = Status::getAllStatus($db);
         drawAgentTickets($tickets, $departments, $statuses);
     }
+    if($session->getRole() == 1 ){
+        drawButton('Admin Dashboard', '../pages/admindashboard.php');
+    }
 } 
 drawFooter();
 

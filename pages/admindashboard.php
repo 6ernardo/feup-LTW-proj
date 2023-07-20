@@ -19,6 +19,7 @@ drawHeader($session);
 drawUsers(User::getAllUsers($db));
 drawElementSection(Department::getDepartments($db), 'Department');
 drawElementSection(Status::getAllStatus($db), 'Status');
+drawButton('Back', '../pages');
 drawFooter();
 
 ?>

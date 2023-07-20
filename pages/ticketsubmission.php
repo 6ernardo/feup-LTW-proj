@@ -15,6 +15,7 @@ require_once('../database/classes/department.class.php');
 
 drawHeader($session);
 drawTicketSubmit(Department::getDepartments($db));
+drawButton('Back', '../pages');
 drawFooter();
 
 ?>

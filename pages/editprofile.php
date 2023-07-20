@@ -10,6 +10,7 @@ require_once('../templates/profile.tpl.php');
 
 drawHeader($session);
 drawEditProfile($session);
+drawButton('Back', '../pages');
 drawFooter();
 
 ?>
