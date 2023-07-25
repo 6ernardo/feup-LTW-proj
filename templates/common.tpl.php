@@ -6,6 +6,7 @@
     <head>
         <title>Ticket Site</title>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css"> 
         <script src="../javascript/ticketfilter.js" defer></script>
     </head>
     <body>
@@ -13,24 +14,27 @@
         <header>
             <nav>
                 <h1><a href="../pages/">Ticket Site</a></h1>
-                <?php
-                    if($session->isLoggedIn()) drawLoggedIn();
-                    else drawLoggedOff();
-                ?>
-                <p><a href="../pages/faq.php">FAQ</a></p>
+                <div id="nav_buttons">
+                    <p><a href="../pages/faq.php">FAQ</a></p>
+                    <?php
+                        if($session->isLoggedIn()) drawLoggedIn();
+                        else drawLoggedOff();
+                    ?>
 <?php } ?>
 
 <?php function drawLoggedIn() { ?>
-        <p><a href="../pages/editprofile.php">Edit Profile</a></p>
-        <p><a href="../actions/action_logout.php">Logout</a></p>
+            <p><a href="../pages/editprofile.php">Edit Profile</a></p>
+            <p><a href="../actions/action_logout.php">Logout</a></p>
+        </div>
     </nav>
 </header>
 <main>
 <?php } ?>
 
 <?php function drawLoggedOff() { ?>
-        <p><a href="../pages/login.php">Login</a><p>
-        <p><a href="../pages/register.php">Register</a><p>
+            <p><a href="../pages/login.php">Login</a><p>
+            <p><a href="../pages/register.php">Register</a><p>
+        </div>
     </nav>
 </header>
 <main>
@@ -48,9 +52,9 @@
 <?php } ?>
 
 <?php function drawMessages(Session $session) { ?>
-    <section>
+    <section id="messages">
         <?php foreach($session->getMessages() as $message) { ?>
-            <article>
+            <article class="<?=$message['type']?>">
                 <?=$message['text']?>
             </article>
         <?php } ?>

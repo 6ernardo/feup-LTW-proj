@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: whitesmoke;
+
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+
+header {
+    background-color: grey;
+
+    display: grid;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1 a {
+    text-decoration: none;
+    color: white;
+    margin-left: 1rem;
+}
+
+#nav_buttons {
+    display: flex;
+    align-items: center;
+}
+
+#nav_buttons * {
+    text-decoration: none;
+    color: white;
+    margin-right: 1em;
+}
+
+/*Messages*/
+
+#messages article {
+    padding: 0.8em;
+}
+
+#messages article.success {
+    background-color: lightgreen;
+}
+
+#messages article.error {
+    background-color: lightcoral;
+}
+
+/*Footer*/
+
+footer {
+    position: fixed;
+    bottom: 0;
+    font-size: 0.8rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/*Edit Profile*/
+
+#profile_edit {
+    text-align: center;
+}
+
+#profile_edit form {
+    display: flex;
+    flex-direction: column;
+}
+
+#profile_edit input {
+    width: 20%;
+    height: 2.5rem;
+    margin: auto;
+    margin-top: 1.5rem;
+
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    padding-left: 0.5em;
+}
+
+#profile_edit button {
+    width: 8%;
+    height: 2rem;
+    margin: auto;
+    margin-top: 1.8rem;
+
+    background-color: lightgrey;
+    border-radius: 0.6em;
+}
+
