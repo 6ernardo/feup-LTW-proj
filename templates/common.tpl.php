@@ -62,5 +62,5 @@
 <?php } ?>
 
 <?php function drawButton(string $text, string $path) { ?>
-<button><a href="<?=$path?>"><?=$text?></a></button>
+<button class="special"><a href="<?=$path?>"><?=$text?></a></button>
 <?php } ?>
