@@ -56,8 +56,8 @@ nav h1 a {
 /*Footer*/
 
 footer {
-    position: fixed;
-    bottom: 0;
+    position: relative;
+    top: 1em;
     font-size: 0.8rem;
     width: 100%;
     text-align: center;
@@ -107,6 +107,7 @@ button.special  {
     height: 2rem;
     margin: auto;
     margin-top: 1.8rem;
+    margin-bottom: 2rem;
 
     background-color: lightblue;
     border-radius: 0.6em;
@@ -126,4 +127,81 @@ button.special a {
     color: black;
     width: 100%;
     height: 100%;
+}
+
+/*FAQ*/
+
+.faq_section h2 {
+    text-align: center;
+}
+
+.faq_section p {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.faq_section p a {
+    font-weight: bold;
+    color:cadetblue;
+    text-decoration: none;
+}
+
+.faq_section dl dt {
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: lightgrey;
+    padding: 0.5rem;
+    border-left: 5px solid cadetblue;
+    margin: 1rem 6rem 0;
+}
+
+.faq_section dl dd {
+    color: dimgray;
+    background-color: gainsboro;
+    padding: 0.5rem;
+    border-left: 5px solid lightblue;
+    margin: 0 6rem 1rem;
+}
+
+.faq_section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.faq_section form input {
+    width: 60%;
+    height: 2.5rem;
+    margin: auto;
+    margin-bottom: 1.5rem;
+
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    padding-left: 0.5em;
+}
+
+.faq_section form textarea {
+    width: 60%;
+    height: 5rem;
+    margin: auto;
+    margin-bottom: 1.5rem;
+
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+}
+
+.faq_section button {
+    width: 8%;
+    height: 2rem;
+    margin: auto;
+
+    background-color: lightgrey;
+    border-radius: 0.6em;
+
+    cursor: pointer;
 }

@@ -13,6 +13,11 @@ require_once('../templates/ticket.tpl.php');
 
 require_once('../database/classes/department.class.php');
 
+if(!$session->isLoggedIn()) {
+    $session->addMessage('error', 'You must be logged in to submit a ticket!');
+    header('Location: ../pages');
+}
+
 drawHeader($session);
 drawTicketSubmit(Department::getDepartments($db));
 drawButton('Back', '../pages');
