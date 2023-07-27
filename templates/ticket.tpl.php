@@ -90,6 +90,7 @@
     <h2><?=$ticket->subject?></h2>
     <p><?=$ticket->submitter_id?></p>
     <p><?=$ticket->created?></p>
+    <p><?=$ticket->updated?></p>
     <p><?=$ticket->department_id?></p>
     <p><?=$ticket->status_id?></p>
     <p><?=$ticket->assignee_id?></p>

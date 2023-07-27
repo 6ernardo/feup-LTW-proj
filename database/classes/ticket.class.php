@@ -76,7 +76,7 @@
 
         // Tickets assigned to agent, and tickets of departments the agent is assigned to
         static function getAgentTickets(PDO $db, int $agent) : array {
-            $stmt = $db->prepare('SELECT t.id, t.subject, t.content, t.submitter_id, t.assignee_id, t.department_id, t.status_id 
+            $stmt = $db->prepare('SELECT t.id, t.subject, t.content, t.submitter_id, t.assignee_id, t.department_id, t.status_id, t.created, t.updated 
                                 FROM tickets t LEFT JOIN departments d ON t.department_id = d.id LEFT JOIN agent_departments ad 
                                 ON ad.department_id = d.id WHERE (ad.agent_id = ? OR t.assignee_id = ?)');
             $stmt->execute(array($agent, $agent));
