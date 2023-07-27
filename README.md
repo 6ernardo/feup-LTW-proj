@@ -38,13 +38,11 @@ The goal is to *"develop a website to streamline and manage trouble tickets effe
 
 ### To Do
 
-- When changes are made to the ticket, change the updated field!
+- Display names instead of IDs, something instead of *null*
 
 #### Agents
 - Edit ticket hashtags
 
 ### Misc
-- Add dates to tickets, inquiries, etc
-- IDs being displayed in various places (instead of names)
 - CSS
 - QOL JS

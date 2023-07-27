@@ -24,45 +24,51 @@
 <?php } ?>
 
 <?php function drawTickets(array $tickets) { ?>
-<h2>Your tickets</h2>
-<ul>
-    <li>Subject</li>
-    <li>Department</li>
-    <li>Status</li>
-    <li>Created</li>
-    <li>Last Change</li>
-</ul>
-<?php foreach($tickets as $ticket) { ?>
-    <ul><a href="../pages/ticket.php?id=<?=$ticket->id?>">
-        <li><?=$ticket->subject?></li>
-        <li><?=$ticket->department_id?></li>
-        <li><?=$ticket->status_id?></li>
-        <li><?=$ticket->created?></li>
-        <li><?=$ticket->updated?></li>
-    </a></ul>
-<?php } ?>
-<?php } ?>
-
-<?php function drawAgentTickets(array $tickets, array $departments, array $status) { ?>
-<h2>Assigned tickets</h2>
-<ul>
-    <li>Subject</li>
-    <li>Department</li>
-    <li>Status</li>
-    <li>Created</li>
-    <li>Last Change</li>
-</ul>
-<section id="tickets">
+<div class="ticket_tables">
+    <h2>Your tickets</h2>
+    <ul>
+        <li>Subject</li>
+        <li>Department</li>
+        <li>Status</li>
+        <li>Created</li>
+        <li>Last Change</li>
+    </ul>
+</div>
+<div class="ticket_instance">
     <?php foreach($tickets as $ticket) { ?>
-        <ul><a href="../pages/ticket.php?id=<?=$ticket->id?>">
+        <a href="../pages/ticket.php?id=<?=$ticket->id?>"><ul>
             <li><?=$ticket->subject?></li>
             <li><?=$ticket->department_id?></li>
             <li><?=$ticket->status_id?></li>
             <li><?=$ticket->created?></li>
             <li><?=$ticket->updated?></li>
-        </a></ul>
+        </ul></a>
     <?php } ?>
-</section>
+</div>
+<?php } ?>
+
+<?php function drawAgentTickets(array $tickets, array $departments, array $status) { ?>
+<div class="ticket_tables">
+    <h2>Assigned tickets</h2>
+    <ul>
+        <li>Subject</li>
+        <li>Department</li>
+        <li>Status</li>
+        <li>Created</li>
+        <li>Last Change</li>
+    </ul>
+</div>
+<div class="ticket_instance">
+    <?php foreach($tickets as $ticket) { ?>
+        <a href="../pages/ticket.php?id=<?=$ticket->id?>"><ul>
+            <li><?=$ticket->subject?></li>
+            <li><?=$ticket->department_id?></li>
+            <li><?=$ticket->status_id?></li>
+            <li><?=$ticket->created?></li>
+            <li><?=$ticket->updated?></li>
+        </ul></a>
+    <?php } ?>
+</div>
 <form>
     <label>
         Filter by Department

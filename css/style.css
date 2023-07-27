@@ -205,3 +205,36 @@ button.special a {
 
     cursor: pointer;
 }
+
+/*Ticket tables*/
+
+.ticket_tables h2 {
+    text-align: center;
+}
+
+.ticket_tables ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+
+    background-color: lightgrey;
+    padding: 0.8rem;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+}
+
+.ticket_instance ul {
+    background-color: gainsboro;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+.ticket_instance a ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
