@@ -11,6 +11,7 @@
 
     $department = $_POST['department'];
     $ticket_id = $_GET['id'];
+    $date = date('Y-m-d H:i');
 
     $ticket = Ticket::getTicket($db, intval($ticket_id));
 
@@ -18,9 +19,9 @@
     $stmt->execute(array($department, $ticket_id));
 
     // Add change to history
-    $stmt = $db->prepare('INSERT INTO ticket_changes (ticket_id, user_id, changed_field, old_version, new_version)
-                         VALUES (?, ?, ?, ?, ?)');
-    $stmt->execute(array($ticket_id, $session->getID(), 'Assigned Agent', $ticket->department_id, $department));
+    $stmt = $db->prepare('INSERT INTO ticket_changes (ticket_id, user_id, changed_field, old_version, new_version, date)
+                         VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt->execute(array($ticket_id, $session->getID(), 'Assigned Department', $ticket->department_id, $department, $date));
 
     $session->addMessage('success', 'Ticket department changed with success!');
 

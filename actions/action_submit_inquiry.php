@@ -10,9 +10,10 @@
     $ticket = $_GET['id'];
     $user = $session->getID();
     $content = $_POST['inquiry'];
+    $date = date('Y-m-d H:i');
 
-    $stmt = $db->prepare('INSERT INTO ticket_inquiries (ticket_id, user_id, content) VALUES (?, ?, ?)');
-    $stmt->execute(array($ticket, $user, $content));
+    $stmt = $db->prepare('INSERT INTO ticket_inquiries (ticket_id, user_id, content, date) VALUES (?, ?, ?, ?)');
+    $stmt->execute(array($ticket, $user, $content, $date));
 
     $session->addMessage('success', 'Inquiry message submited!');
 

@@ -11,6 +11,7 @@
 
     $agent = $_POST['agent'];
     $ticket_id = $_GET['id'];
+    $date = date('Y-m-d H:i');
 
     $ticket = Ticket::getTicket($db, intval($ticket_id));
 
@@ -18,9 +19,9 @@
     $stmt->execute(array($agent, $ticket_id));
 
     // Add change to history
-    $stmt = $db->prepare('INSERT INTO ticket_changes (ticket_id, user_id, changed_field, old_version, new_version)
-                         VALUES (?, ?, ?, ?, ?)');
-    $stmt->execute(array($ticket_id, $session->getID(), 'Assigned Agent', $ticket->assignee_id, $agent));
+    $stmt = $db->prepare('INSERT INTO ticket_changes (ticket_id, user_id, changed_field, old_version, new_version, date)
+                         VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt->execute(array($ticket_id, $session->getID(), 'Assigned Agent', $ticket->assignee_id, $agent, $date));
 
     $session->addMessage('success', 'Agent assigned with success!');
 

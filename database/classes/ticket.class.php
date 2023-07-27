@@ -7,16 +7,20 @@
         public int $id;
         public string $subject;
         public ?string $content;
+        public string $created;
+        public ?string $updated;
         public int $submitter_id;
         public ?int $assignee_id;
         public ?int $department_id;
         public int $status_id;
 
-        public function __construct(int $id, string $subject, ?string $content, int $submitter_id, 
+        public function __construct(int $id, string $subject, ?string $content, string $created, ?string $updated, int $submitter_id, 
                                     ?int $assignee_id, $department_id, int $status_id) {
             $this->id = $id;
             $this->subject = $subject;
             $this->content = $content;
+            $this->created = $created;
+            $this->updated = $updated;
             $this->submitter_id = $submitter_id;
             $this->assignee_id = $assignee_id;
             $this->department_id = $department_id === "" ? null : $department_id;
@@ -30,7 +34,8 @@
             $tickets = array();
 
             while ($ticket = $stmt->fetch()) {
-                $tickets[] = new Ticket($ticket['id'], $ticket['subject'], $ticket['content'], 
+                $tickets[] = new Ticket($ticket['id'], $ticket['subject'], $ticket['content'],
+                                        $ticket['created'], $ticket['updated'],
                                         $ticket['submitter_id'], $ticket['assignee_id'], 
                                         $ticket['department_id'], $ticket['status_id']);
             }
@@ -45,7 +50,10 @@
             $ticket = $stmt->fetch();
 
             if($ticket){
-                return new Ticket($ticket['id'], $ticket['subject'], $ticket['content'], $ticket['submitter_id'], $ticket['assignee_id'], $ticket['department_id'], $ticket['status_id']);
+                return new Ticket($ticket['id'], $ticket['subject'], $ticket['content'],
+                                    $ticket['created'], $ticket['updated'],
+                                    $ticket['submitter_id'], $ticket['assignee_id'], 
+                                    $ticket['department_id'], $ticket['status_id']);
             }
             else return null;
         }
@@ -57,9 +65,10 @@
             $tickets = array();
 
             while($ticket = $stmt->fetch()){
-                $tickets[] = new Ticket($ticket['id'], $ticket['subject'], $ticket['content'], 
-                $ticket['submitter_id'], $ticket['assignee_id'], 
-                $ticket['department_id'], $ticket['status_id']);
+                $tickets[] = new Ticket($ticket['id'], $ticket['subject'], $ticket['content'],
+                                        $ticket['created'], $ticket['updated'],
+                                        $ticket['submitter_id'], $ticket['assignee_id'], 
+                                        $ticket['department_id'], $ticket['status_id']);
             }
 
             return $tickets;
@@ -76,7 +85,8 @@
 
             
             while($ticket = $stmt->fetch()){
-                $tickets[] = new Ticket($ticket['id'], $ticket['subject'], $ticket['content'], 
+                $tickets[] = new Ticket($ticket['id'], $ticket['subject'], $ticket['content'],
+                                        $ticket['created'], $ticket['updated'],
                                         $ticket['submitter_id'], $ticket['assignee_id'], 
                                         $ticket['department_id'], $ticket['status_id']);
             }
@@ -105,7 +115,8 @@
 
             
             while($ticket = $stmt->fetch()){
-                $tickets[] = new Ticket($ticket['id'], $ticket['subject'], $ticket['content'], 
+                $tickets[] = new Ticket($ticket['id'], $ticket['subject'], $ticket['content'],
+                                        $ticket['created'], $ticket['updated'],
                                         $ticket['submitter_id'], $ticket['assignee_id'], 
                                         $ticket['department_id'], $ticket['status_id']);
             }
@@ -121,7 +132,8 @@
 
             while($change = $stmt->fetch()){
                 $changes[] = array('user_id' => $change['user_id'], 'changed_field' => $change['changed_field'], 
-                                'old_version' => $change['old_version'], 'new_version' => $change['new_version']);
+                                'old_version' => $change['old_version'], 'new_version' => $change['new_version'],
+                                'date' => $change['date']);
             }
 
             return $changes;

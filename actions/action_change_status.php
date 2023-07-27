@@ -11,6 +11,7 @@
 
     $status = $_POST['status'];
     $ticket_id = $_GET['id'];
+    $date = date('Y-m-d H:i');
 
     $ticket = Ticket::getTicket($db, intval($ticket_id));
 
@@ -18,9 +19,9 @@
     $stmt->execute(array($status, $ticket_id));
 
     // Add change to history
-    $stmt = $db->prepare('INSERT INTO ticket_changes (ticket_id, user_id, changed_field, old_version, new_version)
-                         VALUES (?, ?, ?, ?, ?)');
-    $stmt->execute(array($ticket_id, $session->getID(), 'Changed Status', $ticket->status_id, $status));
+    $stmt = $db->prepare('INSERT INTO ticket_changes (ticket_id, user_id, changed_field, old_version, new_version, date)
+                         VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt->execute(array($ticket_id, $session->getID(), 'Changed Status', $ticket->status_id, $status, $date));
 
     $session->addMessage('success', 'Ticket status updated!');
 

@@ -38,6 +38,8 @@ The goal is to *"develop a website to streamline and manage trouble tickets effe
 
 ### To Do
 
+- When changes are made to the ticket, change the updated field!
+
 #### Agents
 - Edit ticket hashtags
 

@@ -29,12 +29,16 @@
     <li>Subject</li>
     <li>Department</li>
     <li>Status</li>
+    <li>Created</li>
+    <li>Last Change</li>
 </ul>
 <?php foreach($tickets as $ticket) { ?>
     <ul><a href="../pages/ticket.php?id=<?=$ticket->id?>">
         <li><?=$ticket->subject?></li>
         <li><?=$ticket->department_id?></li>
         <li><?=$ticket->status_id?></li>
+        <li><?=$ticket->created?></li>
+        <li><?=$ticket->updated?></li>
     </a></ul>
 <?php } ?>
 <?php } ?>
@@ -45,6 +49,8 @@
     <li>Subject</li>
     <li>Department</li>
     <li>Status</li>
+    <li>Created</li>
+    <li>Last Change</li>
 </ul>
 <section id="tickets">
     <?php foreach($tickets as $ticket) { ?>
@@ -52,6 +58,8 @@
             <li><?=$ticket->subject?></li>
             <li><?=$ticket->department_id?></li>
             <li><?=$ticket->status_id?></li>
+            <li><?=$ticket->created?></li>
+            <li><?=$ticket->updated?></li>
         </a></ul>
     <?php } ?>
 </section>
@@ -81,6 +89,7 @@
 <?php function drawTicketInfo(Ticket $ticket) { ?>
     <h2><?=$ticket->subject?></h2>
     <p><?=$ticket->submitter_id?></p>
+    <p><?=$ticket->created?></p>
     <p><?=$ticket->department_id?></p>
     <p><?=$ticket->status_id?></p>
     <p><?=$ticket->assignee_id?></p>
@@ -90,6 +99,7 @@
 <?php function drawTicketInquirySection(Ticket $ticket, array $inquiries) { ?>
     <?php foreach($inquiries as $inq) { ?>
         <p><?=$inq->user_id?></p>
+        <p><?=$inq->date?></p>
         <p><?=$inq->content?>
     <?php } ?>
     <form action="../actions/action_submit_inquiry.php?id=<?=$ticket->id?>" method="POST">
@@ -150,6 +160,7 @@
     <h2><?=$ticket->subject?></h2>
     <p>Ticket #<?=$ticket->id?></p>
     <?php foreach($history as $change) {?>
+        <p><?=$change['date']?></p>
         <p><?=$change['changed_field']?></p>
     <?php } ?>
 <?php } ?>
