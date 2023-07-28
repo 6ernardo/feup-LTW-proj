@@ -59,6 +59,18 @@
             else return null;
         }
 
+        static function getUsername(PDO $db, int $id) : ?string {
+            $stmt = $db->prepare('SELECT * FROM users WHERE id = ?');
+            $stmt->execute(array($id));
+
+            $user = $stmt->fetch();
+
+            if($user){
+                return $user['username'];
+            }
+            else return null;
+        }
+
         static function getAgents(PDO $db) : array {
             $stmt = $db->prepare('SELECT * FROM users WHERE role_id < 3');
             $stmt->execute();

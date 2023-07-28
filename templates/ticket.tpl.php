@@ -2,6 +2,7 @@
 declare(strict_types = 1); 
 require_once('../database/classes/department.class.php');
 require_once('../database/classes/status.class.php');
+require_once('../database/classes/user.class.php');
 ?>
 
 <?php function drawTicketSubmit(array $departments) { ?>
@@ -98,12 +99,12 @@ require_once('../database/classes/status.class.php');
 
 <?php function drawTicketInfo(PDO $db, Ticket $ticket) { ?>
     <h2><?=$ticket->subject?></h2>
-    <p><?=$ticket->submitter_id?></p>
+    <p><?=User::getUsername($db, intval($ticket->submitter_id))?></p>
     <p><?=$ticket->created?></p>
     <p><?=$ticket->updated ?? '-'?></p>
     <p><?=Department::getDepartmentName($db, intval($ticket->department_id))?></p>
     <p><?=Status::getStatusName($db, intval($ticket->status_id))?></p>
-    <p><?=$ticket->assignee_id?></p>
+    <p><?=User::getUsername($db, intval($ticket->assignee_id)) ?? 'No assigned agent' ?></p>
     <p><?=$ticket->content?></p>
 <?php } ?>
 

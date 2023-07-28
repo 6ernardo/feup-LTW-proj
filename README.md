@@ -38,8 +38,6 @@ The goal is to *"develop a website to streamline and manage trouble tickets effe
 
 ### To Do
 
-- Display names instead of IDs, something instead of *null*
-
 #### Agents
 - Edit ticket hashtags
 
