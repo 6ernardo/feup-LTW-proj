@@ -1,4 +1,7 @@
-<?php declare(strict_types = 1); ?>
+<?php 
+declare(strict_types = 1); 
+require_once('../database/classes/department.class.php');
+?>
 
 <?php function drawTicketSubmit(array $departments) { ?>
 <form action="../actions/action_submit_ticket.php" method="POST">
@@ -23,7 +26,7 @@
 </form>
 <?php } ?>
 
-<?php function drawTickets(array $tickets) { ?>
+<?php function drawTickets(PDO $db, array $tickets) { ?>
 <div class="ticket_tables">
     <h2>Your tickets</h2>
     <ul>
@@ -38,16 +41,16 @@
     <?php foreach($tickets as $ticket) { ?>
         <a href="../pages/ticket.php?id=<?=$ticket->id?>"><ul>
             <li><?=$ticket->subject?></li>
-            <li><?=$ticket->department_id?></li>
+            <li><?=Department::getDepartmentName($db, intval($ticket->department_id))?></li>
             <li><?=$ticket->status_id?></li>
             <li><?=$ticket->created?></li>
-            <li><?=$ticket->updated?></li>
+            <li><?=$ticket->updated ?? '-'?></li>
         </ul></a>
     <?php } ?>
 </div>
 <?php } ?>
 
-<?php function drawAgentTickets(array $tickets, array $departments, array $status) { ?>
+<?php function drawAgentTickets(PDO $db, array $tickets, array $departments, array $status) { ?>
 <div class="ticket_tables">
     <h2>Assigned tickets</h2>
     <ul>
@@ -62,10 +65,10 @@
     <?php foreach($tickets as $ticket) { ?>
         <a href="../pages/ticket.php?id=<?=$ticket->id?>"><ul>
             <li><?=$ticket->subject?></li>
-            <li><?=$ticket->department_id?></li>
+            <li><?=Department::getDepartmentName($db, intval($ticket->department_id))?></li>
             <li><?=$ticket->status_id?></li>
             <li><?=$ticket->created?></li>
-            <li><?=$ticket->updated?></li>
+            <li><?=$ticket->updated ?? '-'?></li>
         </ul></a>
     <?php } ?>
 </div>
@@ -92,12 +95,12 @@
 </form>
 <?php } ?>
 
-<?php function drawTicketInfo(Ticket $ticket) { ?>
+<?php function drawTicketInfo(PDO $db, Ticket $ticket) { ?>
     <h2><?=$ticket->subject?></h2>
     <p><?=$ticket->submitter_id?></p>
     <p><?=$ticket->created?></p>
-    <p><?=$ticket->updated?></p>
-    <p><?=$ticket->department_id?></p>
+    <p><?=$ticket->updated ?? '-'?></p>
+    <p><?=Department::getDepartmentName($db, intval($ticket->department_id))?></p>
     <p><?=$ticket->status_id?></p>
     <p><?=$ticket->assignee_id?></p>
     <p><?=$ticket->content?></p>

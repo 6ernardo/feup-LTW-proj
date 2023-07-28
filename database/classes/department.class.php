@@ -23,6 +23,18 @@
             return $departments;
         }
 
+        static function getDepartmentName(PDO $db, int $id) : string {
+            $stmt = $db->prepare('SELECT * FROM departments WHERE id = ?');
+            $stmt->execute(array($id));
+
+            $dept = $stmt->fetch();
+
+            if($dept){
+                return $dept['name'];
+            }
+            else return 'No department';
+        }
+
         static function departmentNameAvailable(PDO $db, string $name) : bool {
             $stmt = $db->prepare('SELECT * FROM departments WHERE name = ?');
             $stmt->execute(array($name));

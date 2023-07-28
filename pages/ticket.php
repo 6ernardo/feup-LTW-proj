@@ -27,7 +27,7 @@ $statuses = Status::getAllStatus($db);
 
 
 drawHeader($session);
-drawTicketInfo($ticket);
+drawTicketInfo($db, $ticket);
 drawTicketInquirySection($ticket, $inquiries);
 
 if($session->getRole() < 3){

@@ -17,13 +17,13 @@ require_once('../database/classes/department.class.php');
 
 drawHeader($session);
 if($session->isLoggedIn()){
-    drawTickets(Ticket::getUserTickets($db, $session->getID()));
+    drawTickets($db, Ticket::getUserTickets($db, $session->getID()));
     drawButton('Submit new Ticket', '../pages/ticketsubmission.php');
     if($session->getRole() < 3 ){
         $tickets = Ticket::getAgentTickets($db, $session->getID());
         $departments = Department::getDepartments($db);
         $statuses = Status::getAllStatus($db);
-        drawAgentTickets($tickets, $departments, $statuses);
+        drawAgentTickets($db, $tickets, $departments, $statuses);
     }
     if($session->getRole() == 1 ){
         drawButton('Admin Dashboard', '../pages/admindashboard.php');

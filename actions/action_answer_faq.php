@@ -16,11 +16,12 @@
     $faq = $stmt->fetch();
     $question = $faq['question'];
     $answer = $faq['answer'];
+    $date = date('Y-m-d H:i');
 
     $content = "Your problem can be solved with the following entry in our FAQ: " . $question . " " . $answer;
 
-    $stmt = $db->prepare('INSERT INTO ticket_inquiries (ticket_id, user_id, content) VALUES (?, ?, ?)');
-    $stmt->execute(array($ticket, $session->getID(), $content));
+    $stmt = $db->prepare('INSERT INTO ticket_inquiries (ticket_id, user_id, content, date) VALUES (?, ?, ?, ?)');
+    $stmt->execute(array($ticket, $session->getID(), $content, $date));
 
     $session->addMessage('success', 'Responded to inquiry with FAQ.');
 
