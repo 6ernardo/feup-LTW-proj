@@ -1,6 +1,7 @@
 <?php 
 declare(strict_types = 1); 
 require_once('../database/classes/department.class.php');
+require_once('../database/classes/status.class.php');
 ?>
 
 <?php function drawTicketSubmit(array $departments) { ?>
@@ -42,7 +43,7 @@ require_once('../database/classes/department.class.php');
         <a href="../pages/ticket.php?id=<?=$ticket->id?>"><ul>
             <li><?=$ticket->subject?></li>
             <li><?=Department::getDepartmentName($db, intval($ticket->department_id))?></li>
-            <li><?=$ticket->status_id?></li>
+            <li><?=Status::getStatusName($db, intval($ticket->status_id))?></li>
             <li><?=$ticket->created?></li>
             <li><?=$ticket->updated ?? '-'?></li>
         </ul></a>
@@ -66,7 +67,7 @@ require_once('../database/classes/department.class.php');
         <a href="../pages/ticket.php?id=<?=$ticket->id?>"><ul>
             <li><?=$ticket->subject?></li>
             <li><?=Department::getDepartmentName($db, intval($ticket->department_id))?></li>
-            <li><?=$ticket->status_id?></li>
+            <li><?=Status::getStatusName($db, intval($ticket->status_id))?></li>
             <li><?=$ticket->created?></li>
             <li><?=$ticket->updated ?? '-'?></li>
         </ul></a>
@@ -101,7 +102,7 @@ require_once('../database/classes/department.class.php');
     <p><?=$ticket->created?></p>
     <p><?=$ticket->updated ?? '-'?></p>
     <p><?=Department::getDepartmentName($db, intval($ticket->department_id))?></p>
-    <p><?=$ticket->status_id?></p>
+    <p><?=Status::getStatusName($db, intval($ticket->status_id))?></p>
     <p><?=$ticket->assignee_id?></p>
     <p><?=$ticket->content?></p>
 <?php } ?>

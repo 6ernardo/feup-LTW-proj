@@ -23,6 +23,18 @@
             return $statuses;
         }
 
+        static function getStatusName(PDO $db, int $id) : string {
+            $stmt = $db->prepare('SELECT * FROM status WHERE id = ?');
+            $stmt->execute(array($id));
+
+            $status = $stmt->fetch();
+
+            if($status){
+                return $status['name'];
+            }
+            else return 'No defined Status';
+        }
+
         static function statusNameAvailable(PDO $db, string $name) : bool {
             $stmt = $db->prepare('SELECT * FROM status WHERE name = ?');
             $stmt->execute(array($name));
