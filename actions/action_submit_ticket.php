@@ -19,5 +19,7 @@
 
     $session->addMessage('success', 'Ticket created with success!');
 
-    header('Location: ../pages');
+    $ticket_id = $db->lastInsertId();
+
+    header("Location: ../pages/ticket.php?id=$ticket_id");
 ?>
