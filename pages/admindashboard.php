@@ -16,9 +16,12 @@ require_once('../database/classes/department.class.php');
 require_once('../database/classes/status.class.php');
 
 drawHeader($session);
+echo '<div class="admin_dash">';
 drawUsers(User::getAllUsers($db));
+echo '<div class="right_section">';
 drawElementSection(Department::getDepartments($db), 'Department');
 drawElementSection(Status::getAllStatus($db), 'Status');
+echo '</div></div>';
 drawButton('Back', '../pages');
 drawFooter();
 

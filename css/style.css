@@ -215,7 +215,7 @@ button.special a {
 .ticket_tables ul {
     display: flex;
     list-style: none;
-    justify-content: space-around;
+    justify-content: space-evenly;
 
     background-color: lightgrey;
     padding: 0.8rem;
@@ -236,7 +236,7 @@ button.special a {
 .ticket_instance a ul {
     display: flex;
     list-style: none;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 /* Ticket submission */
@@ -316,4 +316,59 @@ button.special a {
     border-radius: 0.6em;
 
     cursor: pointer;
+}
+
+/* Admin Dashboard */
+
+.admin_dash {
+    display: flex;
+}
+
+.users_section {
+    width: 50%;
+}
+
+.users_table h2 {
+    text-align: center;
+}
+
+.users_table ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+
+    background-color: lightgrey;
+    padding: 0.8rem;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+}
+
+.user_instance ul {
+    background-color: gainsboro;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+.user_instance a ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+}
+
+.element_section h2 {
+    text-align: center;
+}
+
+.element_lists {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.element_lists P {
+    margin: 0.5rem;
 }

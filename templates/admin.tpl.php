@@ -1,35 +1,45 @@
 <?php declare(strict_types = 1); ?>
 
 <?php function drawUsers(array $users) { ?>
-<h2>Users</h2>
-<ul>
-    <li>ID</li>
-    <li>Username</li>
-    <li>Email</li>
-    <li>Role</li>
-</ul>
-<?php foreach($users as $user) { ?>
-    <ul><a href="../pages/usermanagement.php?id=<?=$user->id?>">
-        <li><?=$user->id?></li>
-        <li><?=$user->username?></li>
-        <li><?=$user->email?></li>
-        <li><?=$user->role?></li>
-    </a></ul>
-<?php } ?>
+<div class="users_section">
+    <div class="users_table">
+        <h2>Users</h2>
+        <ul>
+            <li>ID</li>
+            <li>Username</li>
+            <li>Email</li>
+            <li>Role</li>
+        </ul>
+    </div>
+    <div class="user_instance">
+        <?php foreach($users as $user) { ?>
+            <a href="../pages/usermanagement.php?id=<?=$user->id?>"><ul>
+                <li><?=$user->id?></li>
+                <li><?=$user->username?></li>
+                <li><?=$user->email?></li>
+                <li><?=$user->role?></li>
+            </ul></a>
+        <?php } ?>
+    </div>
+</div>
 <?php } ?>
 
 <?php function drawElementSection(array $elements, string $element_designation) { ?>
-<h2><?=$element_designation?> List</h2>
-<?php foreach($elements as $elem) { ?>
-    <?=$elem->name?>
-<?php } ?>
-<form action="../actions/action_create_<?=$element_designation?>.php" method="POST">
-    <label>
-        New <?=$element_designation?> name
-        <input type="text" name="<?=$element_designation?>_name" required>
-        <button type="submit" name="submit_new_<?=$element_designation?>">Create</button>
-    </label>
-</form>
+<div class="element_section">
+    <h2><?=$element_designation?> List</h2>
+    <div class="element_lists">
+    <?php foreach($elements as $elem) { ?>
+        <p><?=$elem->name?></p>
+    <?php } ?>
+    </div>
+    <form action="../actions/action_create_<?=$element_designation?>.php" method="POST">
+        <label>
+            New <?=$element_designation?> name
+            <input type="text" name="<?=$element_designation?>_name" required>
+            <button type="submit" name="submit_new_<?=$element_designation?>">Create</button>
+        </label>
+    </form>
+</div>
 <?php } ?>
 
 <?php function drawUserInfo(User $user, array $dept_assigned, array $roles, array $departments) { ?>
