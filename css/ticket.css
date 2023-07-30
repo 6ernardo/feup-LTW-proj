@@ -1,0 +1,53 @@
+.ticket_info {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin: auto;
+    margin-top: 0.5rem;
+    color: dimgray;
+}
+
+.ticket_text {
+    width: 60%;
+    margin: auto;
+}
+
+.ticket_text h2 {
+    align-self: center;
+    font-size: 3rem;
+    margin: 0;
+}
+
+.ticket_text p {
+    font-size: 1.2rem;
+}
+
+/*Inquiry section*/
+
+.all_inquiries {
+    display: flex;
+    flex-direction: column;
+}
+
+.inquiry_instance {
+    background-color: gainsboro;
+    width: fit-content;
+    padding: 0rem 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+}
+
+.inquiry_info {
+    display: flex;  
+}
+
+.inquiry_info p {
+    font-size: 0.8rem;
+    margin-right: 1rem;
+    margin-bottom: 0;
+    color: dimgray;
+}
+
+

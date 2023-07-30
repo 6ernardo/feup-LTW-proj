@@ -7,6 +7,7 @@
         <title>Ticket Site</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="../css/style.css"> 
+        <link rel="stylesheet" href="../css/ticket.css"> 
         <script src="../javascript/ticketfilter.js" defer></script>
     </head>
     <body>

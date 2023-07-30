@@ -95,22 +95,32 @@ require_once('../database/classes/user.class.php');
 <?php } ?>
 
 <?php function drawTicketInfo(PDO $db, Ticket $ticket) { ?>
+<div class="ticket_info">
+    <p>by <?=User::getUsername($db, intval($ticket->submitter_id))?></p>
+    <p>posted on <?=$ticket->created?></p>
+    <p>last updated on <?=$ticket->updated ?? '-'?></p>
+    <p>department: <?=Department::getDepartmentName($db, intval($ticket->department_id))?></p>
+    <p>status: <?=Status::getStatusName($db, intval($ticket->status_id))?></p>
+    <p>agent: <?=User::getUsername($db, intval($ticket->assignee_id)) ?? 'No assigned agent' ?></p>
+</div>
+<div class="ticket_text">
     <h2><?=$ticket->subject?></h2>
-    <p><?=User::getUsername($db, intval($ticket->submitter_id))?></p>
-    <p><?=$ticket->created?></p>
-    <p><?=$ticket->updated ?? '-'?></p>
-    <p><?=Department::getDepartmentName($db, intval($ticket->department_id))?></p>
-    <p><?=Status::getStatusName($db, intval($ticket->status_id))?></p>
-    <p><?=User::getUsername($db, intval($ticket->assignee_id)) ?? 'No assigned agent' ?></p>
     <p><?=$ticket->content?></p>
+</div>
 <?php } ?>
 
-<?php function drawTicketInquirySection(Ticket $ticket, array $inquiries) { ?>
-    <?php foreach($inquiries as $inq) { ?>
-        <p><?=$inq->user_id?></p>
-        <p><?=$inq->date?></p>
-        <p><?=$inq->content?>
-    <?php } ?>
+<?php function drawTicketInquirySection(PDO $db, Ticket $ticket, array $inquiries) { ?>
+    <div class="all_inquiries">
+        <?php foreach($inquiries as $inq) { ?>
+            <div class="inquiry_instance">
+                <div class="inquiry_info">
+                    <p>by <?=User::getUsername($db, intval($inq->user_id))?></p>
+                    <p>on <?=$inq->date?></p>
+                </div>
+                <p><?=$inq->content?></p>
+            </div>
+        <?php } ?>
+    </div>
     <form action="../actions/action_submit_inquiry.php?id=<?=$ticket->id?>" method="POST">
         <input type="text" name="inquiry" placeholder="Message..." required>
         <button type="submit" name="submit_inquiry">Send</button>
