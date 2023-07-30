@@ -10,37 +10,31 @@ The goal is to *"develop a website to streamline and manage trouble tickets effe
 
 [*More detailed info on the requirements of the project can be found by clicking here.*](https://web.fe.up.pt/~arestivo/page/courses/ltw/project/)
 
-### Completed Tasks
 
-#### All users
+### Current Functionalities
+
+#### All users can
 - Register, Login and Logout
 - Edit their profile
 
-#### Clients
-- Submit tickets
+#### Clients can
+- Submit tickets (with and without specifying a department)
 - List and track their tickets
 - Reply to ticket inquiries
 
-#### Agents
-- Change department of ticket
-- Assign ticket
-- Manage FAQ
-- Use FAQ to answer ticket
-- List tickets by departments
-- Filter tickets
-- Change status of ticket
+#### Agents can
+- List tickets from their departments, and tickets they have been assigned to
+- Change department, status and assigned agent of a ticket
 - List all changes done to a ticket
+- Manage FAQ and use FAQ to answer to tickets
 
-#### Admins
-- Add new department, statuses
-- Edit user's role
+#### Admins can
+- Edit user roles
+- Add new departments and statuses
 - Assign agents to departments
 
-### To Do
+### TO DO
 
-#### Agents
-- Edit ticket hashtags
-
-### Misc
-- CSS
-- QOL JS
+- Fix ticket filtering (by department, date)
+- Visual/Usability improvements via CSS/JS
+- Ticket hashtags with autocomplete
